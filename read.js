@@ -15,19 +15,21 @@ var text = "";
 var wpm = 0;
 var words = text.split(" ");
 var repeat;
+var speed;
 
 function reader() //function called by the button in index.html
 {
   text = document.getElementById("text_input").value; //Text Input text box value
   wpm = document.getElementById("wpm").value; //WPM text box value
-  let speed = parseFloat(wpm); // take wpm and set it as a float value in speed
+  speed = parseFloat(wpm); // take wpm and set it as a float value in speed
 
   words = text.split(/\s+/); // split the text string at every whitespace
 
-  speed = 1.0 / (speed / 60.0) * 1000; // the formula to set the speed
+  speed = 1000 / (speed / 60.0); // the formula to set the speed
 
   repeat = setInterval(main, speed); // repeat the function 'main' at the interval of 'speed'
 }
+
 
 function main()
 {
